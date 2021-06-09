@@ -20,6 +20,17 @@
       </configuration>
     </server>
     <server>
+      <id>gitlab-maven-dws</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Job-Token</name>
+            <value>${CI_JOB_TOKEN}</value>
+          </property>
+        </httpHeaders>
+      </configuration>
+    </server>
+    <server>
       <id>gitlab</id>  
       <username>${GITLAB_USER_LOGIN}</username>  
       <password>${GITLAB_MAVEN_PRIVATE_TOKEN}</password>  
@@ -35,6 +46,22 @@
       <repositories>
         <repository>
           <id>gitlab-maven</id>
+          <!-->must use group ID of gitlab group not name<-->       
+          <url>https://gitlab.com/api/v4/groups/11644130/-/packages/maven</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+        </repository>
+        <repository>
+          <id>gitlab-maven-dws</id>
           <!-->must use group ID of gitlab group not name<-->       
           <url>https://gitlab.com/api/v4/groups/12324030/-/packages/maven</url>
           <layout>default</layout>
@@ -53,6 +80,22 @@
       <pluginRepositories>
         <pluginRepository>
           <id>gitlab-maven</id> 
+          <name>gitlab-maven-plugins</name>
+          <url>https://gitlab.com/api/v4/groups/11644130/-/packages/maven</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+          <id>gitlab-maven-dws</id> 
           <name>gitlab-maven-plugins</name>
           <url>https://gitlab.com/api/v4/groups/12324030/-/packages/maven</url>
           <layout>default</layout>
