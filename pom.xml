@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>dws-spring-boot-parent</artifactId>
+  <artifactId>cpb-spring-boot</artifactId>
   <version>1.1.10-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>${project.artifactId}</name>
-  <description>DWS Spring Boot Parent</description>
+  <description>CPB Spring Boot</description>
 
   <parent>
     <groupId>com.poc.dws</groupId>
