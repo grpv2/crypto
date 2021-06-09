@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.poc.dws</groupId>
     <artifactId>cpb-spring-boot</artifactId>
-    <version>1.1.10</version>
+    <version>1.1.12</version>
   </parent>
 
   <artifactId>cpb-crypto</artifactId>
@@ -39,21 +39,4 @@
         <scope>test</scope>
     </dependency>
   </dependencies>
-  <!--build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>${plugin.release.version}</version>
-        <configuration>
-              <scmCommentPrefix>[ci skip] [maven-release-plugin]</scmCommentPrefix>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-plugin</artifactId>
-        <version>${plugin.scm.version}</version>
-      </plugin>
-    </plugins>
-  </build-->
 </project>
