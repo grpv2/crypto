@@ -5,33 +5,30 @@
   <proxies>
   </proxies>
           
-  <servers>
+ <servers>
     <server>
-      <id>gitlab-maven</id>
-      <configuration>
-        <httpHeaders>
-          <property>
-            <name>Job-Token</name>
-            <value>${CI_JOB_TOKEN}</value>
-          </property>
-        </httpHeaders>
-      </configuration>
+      <!-- for distribution management -->
+      <id>github-maven</id>
+      <!--username>${env.github_repository_owner}</username-->
+      <username>${env.maven_access_user}</username>
+      <password>${env.maven_access_token}</password>
+    </server>
+   <!-- for dependency and plugin management -->
+    <server>
+      <id>github-grpv1-maven</id>
+      <username>${env.maven_access_user}</username>
+      <password>${env.maven_access_token}</password>
     </server>
     <server>
-      <id>gitlab-maven-dws</id>
-      <configuration>
-        <httpHeaders>
-          <property>
-            <name>Job-Token</name>
-            <value>${CI_JOB_TOKEN}</value>
-          </property>
-        </httpHeaders>
-      </configuration>
+      <id>github-grpv2-maven</id>
+      <username>${env.maven_access_user}</username>
+      <password>${env.maven_access_token}</password>
     </server>
+   <!-- for scm operations by release plugin -->
     <server>
-      <id>gitlab</id>  
-      <username>${GITLAB_USER_LOGIN}</username>  
-      <password>${GITLAB_MAVEN_PRIVATE_TOKEN}</password>  
+      <id>github</id>      
+      <username>${env.maven_access_user}</username>
+      <password>${env.maven_access_token}</password>  
     </server>
   </servers>
 
@@ -40,12 +37,13 @@
 
   <profiles>
     <profile>
-      <id>gitlab</id>
+      <id>github</id>
       <repositories>
-        <repository>
-          <id>gitlab-maven</id>
-          <!-->must use group ID of gitlab group not name<-->       
-          <url>https://gitlab.com/api/v4/groups/11644130/-/packages/maven</url>
+        <repository>          
+          <id>github-grpv1-maven</id>
+          <!-->must use group ID of github group<-->  
+          <!-- you will need to specify username password for this in servers section-->
+          <url>https://maven.pkg.github.com/grpv1/*</url>
           <layout>default</layout>
           <releases>
             <enabled>true</enabled>
@@ -58,10 +56,11 @@
             <checksumPolicy>fail</checksumPolicy>
           </snapshots>
         </repository>
-        <repository>
-          <id>gitlab-maven-dws</id>
-          <!-->must use group ID of gitlab group not name<-->       
-          <url>https://gitlab.com/api/v4/groups/12324030/-/packages/maven</url>
+        <repository>          
+          <id>github-grpv2-maven</id>
+          <!-->must use group ID of github group<-->  
+          <!-- you will need to specify username password for this in servers section-->
+          <url>https://maven.pkg.github.com/grpv2/*</url>
           <layout>default</layout>
           <releases>
             <enabled>true</enabled>
@@ -77,9 +76,9 @@
       </repositories>
       <pluginRepositories>
         <pluginRepository>
-          <id>gitlab-maven</id> 
-          <name>gitlab-maven-plugins</name>
-          <url>https://gitlab.com/api/v4/groups/11644130/-/packages/maven</url>
+          <id>gitlab-grpv1-maven</id> 
+          <name>grpv1-maven-plugins</name>
+          <url>https://maven.pkg.github.com/grpv1/*</url>
           <layout>default</layout>
           <releases>
             <enabled>true</enabled>
@@ -93,9 +92,9 @@
           </snapshots>
         </pluginRepository>
         <pluginRepository>
-          <id>gitlab-maven-dws</id> 
-          <name>gitlab-maven-plugins</name>
-          <url>https://gitlab.com/api/v4/groups/12324030/-/packages/maven</url>
+          <id>gitlab-grpv2-maven</id> 
+          <name>grpv1-maven-plugins</name>
+          <url>https://maven.pkg.github.com/grpv2/*</url>
           <layout>default</layout>
           <releases>
             <enabled>true</enabled>
@@ -113,7 +112,7 @@
   </profiles>
 
   <activeProfiles>
-      <activeProfile>gitlab</activeProfile>
+      <activeProfile>github</activeProfile>
   </activeProfiles>
 
 </settings>
