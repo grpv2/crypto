@@ -2,20 +2,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.poc.dws</groupId>
-    <artifactId>cpb-spring-boot</artifactId>
-    <version>1.1.12</version>
+    <groupId>com.poc.grpv1</groupId>
+    <artifactId>grpv2-spring-boot-parent</artifactId>
+    <version>1.1.15</version>
   </parent>
 
-  <artifactId>cpb-crypto</artifactId>
+  <artifactId>grpv2-crypto</artifactId>
   <version>1.1.15-SNAPSHOT</version>
   
   <scm>
-    <developerConnection>scm:git:${CI_PROJECT_URL}.git</developerConnection>
-    <!--connection>scm:git:origin</connection-->
-    <!--connection>scm:git:ssh://git@gitlab.com:natwestgroup/maven-helloworld.git</connection-->
+    <developerConnection>scm:git:${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git</developerConnection>
     <tag>HEAD</tag>
-  </scm>
+ </scm>
 
   <dependencies>
     <dependency>
