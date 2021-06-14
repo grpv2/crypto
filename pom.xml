@@ -8,11 +8,11 @@
   </parent>
 
   <artifactId>grpv2-crypto</artifactId>
-  <version>1.1.15</version>
+  <version>1.1.16-SNAPSHOT</version>
   
   <scm>
     <developerConnection>scm:git:${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git</developerConnection>
-    <tag>grpv2-crypto-1.1.15</tag>
+    <tag>HEAD</tag>
  </scm>
 
   <dependencies>
